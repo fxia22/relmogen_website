@@ -63,12 +63,15 @@
 <body>
     <div class="container" id="main">
         <div class="row">
+			
             <h2 class="col-md-12 text-center">
+				
                ReLMoGen: Leveraging Motion Generation in <br >Reinforcement Learning for Mobile Manipulation </br>
 <!--                 <small>
                     arXiv 2020
                 </small> -->
             </h2>
+			
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
@@ -172,15 +175,119 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
                     Method
                 </h3>
         </div>
+		<div class="col-md-8 col-md-offset-2">
+			
+            <figure>
+                <image src="img/method.png" class="img-responsive" alt="overview">
+                <figcaption>
+                </figcaption>
+            </figure>
+			
+	    </div>
+		
+		<div class="col-md-8 col-md-offset-2">
+			(a) We propose to integrate motion generation into a reinforcement learning loop to lift the action space from low-level robot actions a to subgoals for the motion generator a′; Our ReLMoGen solution maps observations and (possibly) task information to base or arm subgoals that the motion generator transforms into low-level robot commands; (b) The mobile manipulation tasks we can solve with ReLMoGen are composed by a sequence of base and arm subgoals (e.g. pushing open a door for Interactive Navigation).
+	    </div>
+		
+		
+		<div class="col-md-8 col-md-offset-2">
+			
+            <figure>
+                <image src="img/network.png" class="img-responsive" alt="overview">
+                <figcaption>
+                </figcaption>
+            </figure>
+			
+	    </div>
+		
+
+		<div class="col-md-8 col-md-offset-2">
+		Two types of action parameterization of ReLMoGen and network architecture of SGP-D and SGP-R. 
+	    </div>
+		
+		
     </div>
 
      <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
+                    Tasks
+                </h3>
+        </div>
+		<div class="col-md-8 col-md-offset-2">
+        <figure>
+            <image src="img/tasks.png" class="img-responsive" alt="overview">
+            <figcaption>
+            </figcaption>
+        </figure>
+		</div>
+		
+		<div class="col-md-8 col-md-offset-2">
+			We stress test our method on a wide variety of seven robotics tasks including navigation, stationary arm control, interactive navigation and mobile manipulation.
+	    </div>
+		
+		
+    </div>
+
+
+     <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+                <h3>
                     Results
                 </h3>
         </div>
+		
+		<div class="col-md-8 col-md-offset-2">
+        <figure>
+            <image src="img/reward.png" class="img-responsive" alt="overview">
+            <figcaption>
+            </figcaption>
+        </figure>
+		</div>
+		
+		<div class="col-md-8 col-md-offset-2">
+			Here we show reward curves for ReLMoGen and the baselines (SAC and HRL4IN). ReLMoGen achieves higher reward within the same number of environment episodes and achieves higher task completion for all seven tasks while the baselines often converge prematurely to sub-optimal solutions. 
+	    </div>
+		
     </div>
+
+
+     <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Analysis
+                </h3>
+        </div>
+		
+		<div class="col-md-6 col-md-offset-3">
+        <figure>
+            <image src="img/exploration.png" class="img-responsive" alt="overview">
+            <figcaption>
+            </figcaption>
+        </figure>
+		</div>
+		
+		<div class="col-md-8 col-md-offset-2">
+			Here we show ReLMoGen is better at exploration than baselines. (a) shows the 2D projection of latent state space: SAC traverses nearby states with low-level actions, while ReLMoGen-R jumps between distant states linked by a motion plan. (b) shows the physical locations visited by ReLMoGen-R and SAC in 100 episodes: ReLMoGen- R covers a much larger area. (c) shows a top-down map of meaningful interactions (duration ≥1s) during exploration. ReLMoGen-R is able to interact with the environment more than SAC.
+	    </div>
+		
+		<div class="col-md-8 col-md-offset-2">
+        <figure>
+            <image src="img/q-value-vis.png" class="img-responsive" alt="overview">
+            <figcaption>
+            </figcaption>
+        </figure>
+		</div>
+		
+		<div class="col-md-8 col-md-offset-2">
+			Visualization of ReLMoGen-D action maps during evaluation. The image pairs contain the input RGB frames on the left and normalized predicted Q-value maps on the right. The predicted Q-value spikes up at image locations that enable useful interactions, e.g. buttons, cabinet door leaves, and chairs.
+	    </div>
+    
+	
+	
+	</div>
+	
+	
 
 
 
