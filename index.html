@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>ReLMoGen</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/img/foxface.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="512">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/"/>
+    <meta property="og:title" content="ReLMoGen" />
+    <meta property="og:description" content="Project page for Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fourier Feature Networks" />
+    <meta name="twitter:description" content="Project page for Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains." />
+    <meta name="twitter:image" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/img/foxface.jpg" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <link rel="icon" type="image/png" href="img/seal_icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110862391-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110862391-1');
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+               ReLMoGen: Leveraging Motion Generation in <br >Reinforcement Learning for Mobile Manipulation </br>
+<!--                 <small>
+                    arXiv 2020
+                </small> -->
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="http://fxia.me">
+                          Fei Xia*
+                        </a>
+                        </br>Stanford University
+                    </li>
+                    <li>
+                        <a href="https://www.chengshuli.me/">
+                          Chengshu Li*
+                        </a>
+                        </br>Stanford University
+                    </li>
+                    <li>
+                        <a href="https://robertomartinmartin.com/">
+                            Roberto Martín-Martín
+                        </a>
+                        </br>Stanford University
+                    </li>
+                    <li>
+                        <a href="https://orlitany.github.io/">
+                          Or Litany
+                        </a>
+                        </br>Stanford University
+                    </li>
+                    <br>
+                    
+                    <li>
+                        <a href="https://sites.google.com/view/alextoshev">
+                          Alexander Toshev
+                        </a>
+                        </br>Robotics at Google
+                    </li>
+                    <li>
+                        <a href="https://cvgl.stanford.edu/silvio/">
+                          Silvio Savarese
+                        </a>
+                        </br>Stanford University
+                    </li>
+                </ul>
+                *denotes equal contribution
+            </div>
+        </div>
+
+
+      <!--   <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2006.10739">
+                            <image src="img/ff_paper_image.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/tancik/fourier-feature-networks">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+ -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+<!--                 <image src="img/teaser.png" class="img-responsive" alt="overview"><br>
+ -->                <p class="text-justify">
+Many Reinforcement Learning (RL) approaches use joint control signals (positions, velocities, torques) as action space for continuous control tasks. We propose to lift the action space to a higher level in the form of subgoals for a motion generator (a combination of motion planner and trajectory executor). We argue that, by lifting the action space and by leveraging sampling-based motion planners, we can efficiently use RL to solve complex, long-horizon tasks that could not be solved with existing RL methods in the original action space. We propose ReLMoGen -- a framework that combines a learned policy to predict subgoals and a motion generator to plan and execute the motion needed to reach these subgoals. To validate our method, we apply ReLMoGen to two types of tasks: 1) Interactive Navigation tasks, navigation problems where interactions with the environment are required to reach the destination, and 2) Mobile Manipulation tasks, manipulation tasks that require moving the robot base. These problems are challenging because they are usually long-horizon, hard to explore during training, and comprise alternating phases of navigation and interaction. Our method is benchmarked on a diverse set of seven robotics tasks in photo-realistic simulation environments. In all settings, ReLMoGen outperforms state-of-the-art Reinforcement Learning and Hierarchical Reinforcement Learning baselines. ReLMoGen also shows outstanding transferability between different motion generators at test time, indicating a great potential to transfer to real robots.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+               <iframe style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"  src="https://www.youtube.com/embed/eTr0kjgdjBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               </div>
+                
+
+            </div>
+        </div>
+            
+
+     <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Method
+                </h3>
+        </div>
+    </div>
+
+     <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results
+                </h3>
+        </div>
+    </div>
+
+
+
+      <!--   <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Related links
+                </h3>
+                <p class="text-justify">
+                    Random Fourier features were first proposed in the seminal work of <a href="https://people.eecs.berkeley.edu/~brecht/papers/07.rah.rec.nips.pdf">Rahimi & Recht (2007)</a>.
+                </p>
+                <p class="text-justify">
+                    The neural tangent kernel was introduced in <a href="https://arxiv.org/abs/1806.07572">Jacot et al. (2018)</a>. 
+                </p>
+                <p class="text-justify">
+                    We relied on the excellent open source projects <a href="https://github.com/google/jax">JAX</a> and <a href="https://github.com/google/neural-tangents">Neural Tangents</a> for training networks and calculating neural tangent kernels.
+                </p>
+                <p class="text-justify">
+                    In own previous work on <em>neural radiance fields</em> (<a href="https://www.matthewtancik.com/nerf">NeRF</a>), we were surprised to find that a "positional encoding" of input coordinates helped networks learn significantly higher frequency details, inspiring our exploration in this project.
+                </p>
+                <p class="text-justify">
+                    <a href="https://vsitzmann.github.io/siren/">Sitzmann et al. (2020)</a> concurrently introduced <em>sinusoidal representation networks</em> (SIREN), demonstrating exciting progress in coordinate based MLP representations by using a sine function as the nonlinearity between <em>all</em> layers in the network. This allows the MLPs to accurately represent first and second order derivatives of low dimensional signals. 
+                </p>
+                <p class="text-justify">
+                    You can find code to replicate all our experiments on <a href="https://github.com/tancik/fourier-feature-networks">GitHub</a>, but if you just want to try experimenting with the images used on this webpage you can find the uncompressed originals here: 
+                    <a href="img/lion_orig.png">Lion</a>,
+                    <a href="img/greece_orig.png">Greece</a>,
+                    <a href="img/fox_orig.png">Fox</a>.
+                </p>
+            </div>
+        </div> -->
+        
+
+<!--         <div class="row" id="header_img">
+            <figure class="col-md-8 col-md-offset-2">
+                <image src="img/llff_teaser.png" class="img-responsive" alt="overview">
+                <figcaption>
+                </figcaption>
+            </figure>
+                
+        </div> -->
+            
+<!--         <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{tancik2020fourierfeat,
+    title={Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains},
+    author={Matthew Tancik and Pratul P. Srinivasan and Ben Mildenhall and Sara Fridovich-Keil and Nithin Raghavan and Utkarsh Singhal and Ravi Ramamoorthi and Jonathan T. Barron and Ren Ng},
+    journal={arXiv preprint arXiv:2006.10739},
+    year={2020}
+}</textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                We thank Google for providing cloud computing credits for this projects. This project is also supported by HAI AWS grant. The authors would like to thank members from Mobility team of Robotics at Google and PAIR team from Stanford Vision and Learning Group for valuable feedbacks on early versions of this project.
+                    <br>
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
