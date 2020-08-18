@@ -7,28 +7,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>ReLMoGen</title>
+    <title>ReLMoGen: Leveraging Motion Generation in Reinforcement Learning for Mobile Manipulation</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <base href="/"> -->
 
-        <!--FACEBOOK-->
-    <!-- <meta property="og:image" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/img/foxface.jpg">
+     <!--FACEBOOK-->
+     <meta property="og:image" content="http://svl.stanford.edu/projects/relmogen/img/pull_fig.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1024">
-    <meta property="og:image:height" content="512">
+    <meta property="og:image:height" content="400">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/"/>
+    <meta property="og:url" content="http://http://svl.stanford.edu/projects/relmogen/"/>
     <meta property="og:title" content="ReLMoGen" />
-    <meta property="og:description" content="Project page for Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains." /> -->
+    <meta property="og:description" content="Project page for ReLMoGen: Leveraging Motion Generation in Reinforcement Learning for Mobile Manipulation" />
 
         <!--TWITTER-->
-    <!-- <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Fourier Feature Networks" />
-    <meta name="twitter:description" content="Project page for Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains." />
-    <meta name="twitter:image" content="https://people.eecs.berkeley.edu/~bmild/fourfeat/img/foxface.jpg" /> -->
+     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ReLMoGen" />
+    <meta name="twitter:description" content="Project page for ReLMoGen: Leveraging Motion Generation in Reinforcement Learning for Mobile Manipulation" />
+    <meta name="twitter:image" content="http://svl.stanford.edu/projects/relmogen/img/pull_fig.jpg" />
 
 
 <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
@@ -56,8 +56,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
-    
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+    <script>
+        $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </head>
 
 <body>
@@ -153,22 +157,19 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
             </div>
         </div>
 
-
-
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Video
                 </h3>
+                <p class="text-justify">
+                    Short on time? This video should capture the gist of our work. Enjoy!
+	            </p>
                 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-
                    <video id="v0" width="100%" loop="" controls="">
-                            <source src="img/relmogen_youtube_compressed.mp4" type="video/mp4">
+                       <source src="img/relmogen_youtube_compressed.mp4" type="video/mp4">
                    </video>
-
                </div>
-                
-
             </div>
         </div>
             
@@ -189,11 +190,10 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
 			
 	    </div>
 		
-		<div class="col-md-8 col-md-offset-2">
-			(a) We propose to integrate motion generation into a reinforcement learning loop to lift the action space from low-level robot actions a to subgoals for the motion generator a′; Our ReLMoGen solution maps observations and (possibly) task information to base or arm subgoals that the motion generator transforms into low-level robot commands; (b) The mobile manipulation tasks we can solve with ReLMoGen are composed by a sequence of base and arm subgoals (e.g. pushing open a door for Interactive Navigation).
-	    </div>
-		
-		
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px; margin-bottom: 15px">
+            We propose to integrate <b>Motion Generation</b> into a <b>Reinforcement Learning</b> loop to lift the action space from low-level robot commands <b><i>a</i></b> to subgoals for the motion generator <b><i>a′</i></b>; Our ReLMoGen solution maps observations and (possibly) task information to base or arm subgoals that the motion generator transforms into low-level robot commands. The mobile manipulation tasks that we are interested in can usually be decomposed into a sequence of base and arm subgoals (e.g. pushing open a door for Interactive Navigation).
+	    </div>	
+
 		<div class="col-md-8 col-md-offset-2">
 			
             <figure>
@@ -204,19 +204,18 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
 			
 	    </div>
 		
-
-		<div class="col-md-8 col-md-offset-2">
-		Two types of action parameterization of ReLMoGen and network architecture of SGP-D and SGP-R. 
-	    </div>
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px">
+            We instantiate our ReLMoGen solution with two types of action parameterization and network architecture: SGP-D and SGP-R. SGP-D is based on <a data-delay='{"show":"100", "hide":"1000"}' data-toggle="tooltip" data-html="true" title="<a href='https://arxiv.org/abs/1312.5602'>Mnih, Volodymyr, et al. &#34;Playing atari with deep reinforcement learning&#34;. arXiv preprint arXiv:1312.5602 (2013).</a>">DQN</a> using discrete action space. We adopt a fully convolutional network structure that predicts Q-values for the base and arm subgoals spatially aligned with the local top-down map and first-person RGB-D view respectively. SGP-R is based on <a data-delay='{"show":"100", "hide":"1000"}' data-toggle="tooltip" data-html="true" title="<a href='https://arxiv.org/abs/1812.05905'>Haarnoja, Tuomas, et al. &#34;Soft actor-critic algorithms and applications.&#34; arXiv preprint arXiv:1812.05905 (2018).</a>">SAC</a> using continuous action space. The actor network directly predicts the base and arm subgoals and a binary variable that indicates whether to use base or arm for this subgoal.
+        </div>
 		
 		
     </div>
 
      <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Tasks
-                </h3>
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Tasks
+            </h3>
         </div>
 		<div class="col-md-8 col-md-offset-2">
         <figure>
@@ -225,19 +224,106 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
             </figcaption>
         </figure>
 		</div>
-		
+        <div class="col-md-8 col-md-offset-2" style="margin-top: 15px; margin-bottom: 15px">
+            We stress test our method on a wide variety of seven robotics tasks including navigation, stationary arm control, interactive navigation and mobile manipulation. See below for a brief summary of each of our tasks.
+        </div>
 		<div class="col-md-8 col-md-offset-2">
-			We stress test our method on a wide variety of seven robotics tasks including navigation, stationary arm control, interactive navigation and mobile manipulation.
+            <b>PointNav:</b> the goal is to navigate from a random starting location and a random goal location without collision.
 	    </div>
-		
-		
+		<div class="col-md-8 col-md-offset-2">
+            <b>TabletopReachM:</b> the goal is to reach a random goal location (represented as a red circle) on the table.
+	    </div>
+	    <div class="col-md-8 col-md-offset-2">
+            <b>PushDoorNav:</b> the goal is to push a door open, and navigate to the goal location inside the room.
+	    </div>
+   	    <div class="col-md-8 col-md-offset-2">
+            <b>ButtonDoorNav:</b> the goal is to press a button to open a door, and navigate to the goal location inside the room.
+	    </div>
+	    <div class="col-md-8 col-md-offset-2">
+            <b>InteractiveObstaclesNav:</b> the goal is to push away a movable obstacle (represented as a red cuboid), and navigate to goal location behind the obstacles.
+	    </div>
+   	    <div class="col-md-8 col-md-offset-2">
+            <b>ArrangeKitchenMM:</b> the goal is close as many cabinets and drawers as possible in the kitchen.
+	    </div>
+        <div class="col-md-8 col-md-offset-2">
+            <b>ArrangeChairMM:</b> the goal is to tuck the chairs under the table.
+	    </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+               <h3>
+                    Qualitative Results
+               </h3>
+         </div>
+         <div class="col-md-8 col-md-offset-2" style="margin-top: 15px; margin-bottom: 15px">
+             We showcase the qualitative results of our best performing policy in all the tasks.
+         </div>
+               <div class="col-md-4 col-md-offset-2">
+                   <h4>
+                       PointNav
+                   </h4>
+                   <video id="v1" width="100%" loop="" controls="">
+                       <source src="img/random_nav.mp4" type="video/mp4">
+                   </video>
+               </div>
+               <div class="col-md-4">
+                   <h4>
+                       TabletopReachM
+                   </h4>
+                   <video id="v2" width="100%" loop="" controls="">
+                       <source src="img/tabletop_reaching.mp4" type="video/mp4">
+                   </video>
+               </div>
+               <div class="col-md-4 col-md-offset-2">
+                   <h4>
+                       PushDoorNav
+                   </h4>
+                   <video id="v3" width="100%" loop="" controls="">
+                       <source src="img/push_door.mp4" type="video/mp4">
+                   </video>
+               </div>
+               <div class="col-md-4">
+                   <h4>
+                       ButtonDoorNav
+                   </h4>
+                   <video id="v4" width="100%" loop="" controls="">
+                       <source src="img/button_door.mp4" type="video/mp4">
+                   </video>
+               </div>
+               <div class="col-md-4 col-md-offset-2">
+                   <h4>
+                       InteractiveObstaclesNav
+                   </h4>
+                   <video id="v5" width="100%" loop="" controls="">
+                       <source src="img/semantic_obstacles.mp4" type="video/mp4">
+                   </video>
+               </div>
+               <div class="col-md-4">
+                   <h4>
+                       ArrangeKitchenMM
+                   </h4>
+                   <video id="v6" width="100%" loop="" controls="">
+                       <source src="img/push_drawers.mp4" type="video/mp4">
+                   </video>
+               </div>
+
+               <div class="col-md-4 col-md-offset-4">
+                   <h4>
+                       ArrangeChairMM
+                   </h4>
+                   <video id="v7" width="100%" loop="" controls="">
+                       <source src="img/push_chairs.mp4" type="video/mp4">
+                   </video>
+               </div>
+
+    </div>
+     
 
      <div class="row">
         <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Results
+                    Quantitative Results
                 </h3>
         </div>
 		
@@ -249,8 +335,8 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
         </figure>
 		</div>
 		
-		<div class="col-md-8 col-md-offset-2">
-			Here we show reward curves for ReLMoGen and the baselines (SAC and HRL4IN). ReLMoGen achieves higher reward within the same number of environment episodes and achieves higher task completion for all seven tasks while the baselines often converge prematurely to sub-optimal solutions. 
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px">
+            Here we show reward curves for ReLMoGen and the baselines (<a data-delay='{"show":"100", "hide":"1000"}' data-toggle="tooltip" data-html="true" title="<a href='https://arxiv.org/abs/1812.05905'>Haarnoja, Tuomas, et al. &#34;Soft actor-critic algorithms and applications.&#34; arXiv preprint arXiv:1812.05905 (2018).</a>">SAC</a> and <a data-delay='{"show":"100", "hide":"1000"}' data-toggle="tooltip" data-html="true" title="<a href='https://arxiv.org/abs/1910.11432'>Li, Chengshu, et al. &#34;HRL4IN: Hierarchical Reinforcement Learning for Interactive Navigation with Mobile Manipulators.&#34; Conference on Robot Learning. 2020.</a>">HRL4IN</a>). ReLMoGen achieves higher reward with the same number of environment episodes and higher overall task completion for all seven tasks while the baselines often converge prematurely to sub-optimal solutions. 
 	    </div>
 		
     </div>
@@ -271,8 +357,8 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
         </figure>
 		</div>
 		
-		<div class="col-md-8 col-md-offset-2">
-			Here we show ReLMoGen is better at exploration than baselines. (a) shows the 2D projection of latent state space: SAC traverses nearby states with low-level actions, while ReLMoGen-R jumps between distant states linked by a motion plan. (b) shows the physical locations visited by ReLMoGen-R and SAC in 100 episodes: ReLMoGen- R covers a much larger area. (c) shows a top-down map of meaningful interactions (duration ≥1s) during exploration. ReLMoGen-R is able to interact with the environment more than SAC.
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px; margin-bottom: 15px">
+			Here we show ReLMoGen is better at exploration than the SAC baseline. (a) shows the 2D projection of latent state space: SAC traverses nearby states with low-level actions, while ReLMoGen-R jumps between distant states linked by a motion plan. (b) shows the physical locations visited by ReLMoGen-R and SAC in 100 episodes: ReLMoGen-R covers a much larger area. (c) shows a top-down map of meaningful interactions (duration ≥1s) during exploration. ReLMoGen-R is able to interact with the environment more than SAC.
 	    </div>
 		
 		<div class="col-md-8 col-md-offset-2">
@@ -283,11 +369,25 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
         </figure>
 		</div>
 		
-		<div class="col-md-8 col-md-offset-2">
-			Visualization of ReLMoGen-D action maps during evaluation. The image pairs contain the input RGB frames on the left and normalized predicted Q-value maps on the right. The predicted Q-value spikes up at image locations that enable useful interactions, e.g. buttons, cabinet door leaves, and chairs.
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px; margin-bottom: 15px">
+			Here we show the visualization of ReLMoGen-D action maps during evaluation. The image pairs contain the input RGB frames on the left and normalized predicted Q-value maps on the right. The predicted Q-value spikes up at image locations that enable useful interactions, e.g. buttons, cabinet door leaves, and chairs.
 	    </div>
-    
-	
+		<div class="col-md-3 col-md-offset-2">
+        <figure>
+            <image src="img/new_robot2.jpg" class="img-responsive" alt="overview">
+            <figcaption>
+            </figcaption>
+        </figure>
+		</div>
+        <div class="col-md-5">
+            <video id="v8" width="100%" loop="" controls="">
+                <source src="img/movo.mp4" type="video/mp4">
+            </video>
+        </div>
+
+		<div class="col-md-8 col-md-offset-2" style="margin-top: 15px">
+			Here we show the qualitative results of our policy transfer to a new robot Movo. After fine-tuning, our policy quickly adapts to the new embodiment and learns to set feasible subgoals accordingly.
+	    </div>
 	
 	</div>
 	
@@ -334,22 +434,22 @@ Many Reinforcement Learning (RL) approaches use joint control signals (positions
                 
         </div> -->
             
-<!--         <div class="row">
+         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Citation
                 </h3>
                 <div class="form-group col-md-10 col-md-offset-1">
-                    <textarea id="bibtex" class="form-control" readonly>
-@article{tancik2020fourierfeat,
-    title={Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains},
-    author={Matthew Tancik and Pratul P. Srinivasan and Ben Mildenhall and Sara Fridovich-Keil and Nithin Raghavan and Utkarsh Singhal and Ravi Ramamoorthi and Jonathan T. Barron and Ren Ng},
-    journal={arXiv preprint arXiv:2006.10739},
-    year={2020}
+                    <textarea id="bibtex" class="form-control" readonly rows="8" >
+@article{xiali2020relmogen, 
+    title={ReLMoGen: Leveraging Motion Generation in Reinforcement Learning for Mobile Manipulation},
+    author={Xia, Fei and Li, Chengshu and Mart{\'\i}n-Mart{\'\i}n, Roberto and Litany, Or and Toshev, Alexander and Savarese, Silvio }, 
+    journal={arXiv preprint arXiv:2008}, 
+    year={2020} 
 }</textarea>
                 </div>
             </div>
-        </div> -->
+        </div> 
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
